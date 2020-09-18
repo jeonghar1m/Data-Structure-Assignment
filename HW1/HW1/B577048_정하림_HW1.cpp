@@ -16,19 +16,18 @@ int main()
 {
 	playlist my_playlist;
 	my_playlist.no_of_songs = 0;
-	int no = my_playlist.no_of_songs;
-	strcpy_s(my_playlist.song_list[0].artist, 10, "Twice");
-	strcpy_s(my_playlist.song_list[0].title, 10, "Cheer Up!");
-	strcpy_s(my_playlist.song_list[1].artist, 10, "BTS");
-	strcpy_s(my_playlist.song_list[1].title, 10, "Dynamite");
-	strcpy_s(my_playlist.song_list[2].artist, 10, "IU");
-	strcpy_s(my_playlist.song_list[2].title, 10, "25");
-
+	int* no_of_songs = &my_playlist.no_of_songs;
+	strcpy_s(my_playlist.song_list[0].artist, "Twice");
+	strcpy_s(my_playlist.song_list[0].title, "Cheer Up!");
+	strcpy_s(my_playlist.song_list[1].artist, "BTS");
+	strcpy_s(my_playlist.song_list[1].title, "Dynamite");
+	strcpy_s(my_playlist.song_list[2].artist, "IU");
+	strcpy_s(my_playlist.song_list[2].title, "25");
 
 	printf("No\tArtist\tTitle\n");
 	printf("==\t======\t=====\n");
-	for (no; no < 10; ++no)
-		cout << no + 1 << "\t" << my_playlist.song_list->artist[no] << "\t" << my_playlist.song_list->title[no] << endl;
-	cout << "A total number of songs in the list: " << no << endl;
+	for (int i = 0; i <= my_playlist.no_of_songs; ++i)
+		cout << i + 1 << "\t" << my_playlist.song_list->artist[i] << "\t" << my_playlist.song_list->title[i] << endl;
+	cout << "A total number of songs in the list: " << *no_of_songs << endl;
 	return 0;
 }
