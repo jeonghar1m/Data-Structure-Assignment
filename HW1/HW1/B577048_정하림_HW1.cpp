@@ -34,8 +34,8 @@ int main()
 	strcpy_s(my_playlist.song_list[5].title, 30, "What You Waiting For");
 	my_playlist.no_of_songs++;
 
-	printf("No\tArtist\tTitle\n");
-	printf("==\t======\t=====\n");
+	cout << "No\tArtist\tTitle" << endl;
+	cout << "==\t======\t=====" << endl;
 	for (int i = 0; i < my_playlist.no_of_songs; i++)
 		cout << i + 1 << "\t" << my_playlist.song_list[i].artist << "\t" << my_playlist.song_list[i].title << endl;
 	cout << "A total number of songs in the list: " << my_playlist.no_of_songs << endl;
