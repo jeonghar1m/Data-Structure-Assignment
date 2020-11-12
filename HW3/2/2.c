@@ -21,7 +21,7 @@ Node add(Node **head, int item)
     if (*head == NULL) {
         *head = p;
     }
-    //같은것도 삽입해야하므로"="붙여야함!
+
     else if (p->data <= (*head)->data)
     {
         p->link = *head;
@@ -42,7 +42,7 @@ Node add(Node **head, int item)
                 pos->link = p;
                 break;
             }
-            //어떤 경우도 아닐 때 ex) 3 4 5 7일때 6삽입
+
             pos = pos->link;
         }
     }
@@ -156,7 +156,7 @@ int main()
             }
         case 4:
             {
-                //특정 값이 리스트에 있는지 탐색해본다.
+
                 printf("리스트에 존재하는지 조사할 숫자: ");
                 scanf("%d", &item);
                 temp = is_in_list(head, item);
@@ -168,7 +168,7 @@ int main()
             }
         case 5:
             {
-                //리스트에있는 원소중 한개 제거
+
                 printf("리스트의 원소 중 제거하고 싶은 숫자: ");
                 scanf("%d", &item);
                 temp = is_in_list(head, item);
@@ -179,7 +179,7 @@ int main()
                     delete(&head, temp->data, len);
                     printf("제거되었습니다.\n");
                 }
-                //삭제하고 나서 요소 확인
+
                 printf("리스트의 모든 요소를 출력합니다.\n");
                 display(head);
                 printf("남아있는 원소의 갯수는 %d개입니다.\n", get_length(head));
@@ -187,7 +187,6 @@ int main()
             }
         case 6:
             {
-                    //모두 제거하기 
                     printf("리스트의 원소를 모두 제거하겠습니다.\n");
                     clear(&head, len);
                     printf("리스트에 남아있는 원소를 출력합니다.\n");
