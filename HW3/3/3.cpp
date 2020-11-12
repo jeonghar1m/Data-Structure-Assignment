@@ -10,6 +10,12 @@ typedef struct Dnode
 	struct Dnode* rlink;
 }DNode;
 
+void init(DNode* head)
+{
+	head->llink = head;
+	head->rlink = head;
+}
+
 unsigned int countList(DNode* head)
 {
 
@@ -17,17 +23,33 @@ unsigned int countList(DNode* head)
 
 void print_list(DNode* head)
 {
-
+	DNode* p;
+	p = head;
+	for(p=head->rlink; p != head; p = p->rlink)
+	{
+		printf("%s -->", p->data);
+		p = p->rlink;
+	}
+	printf("%s", p -> data);
 }
 
-DNode* createNode(const char* str)
+DNode* createNode(char* str)
 {
-
+	DNode* newnode = (DNode*)malloc(sizeof(DNode));
+	newnode->llink = NULL;
+	newnode->data = str;
+	newnode->rlink = NULL;
+	return newnode;
 }
 
-DNode* add(DNode *head, int item)
+DNode* add(DNode *head, char* item)
 {
-
+	DNode* newnode = createNode(item);
+	DNode* p;
+	p->llink = head;
+	p->rlink = head->rlink;
+	head->rlink->llink = p;
+	head->rlink = p;
 }
 
 DNode* search(DNode* head, const char* str)
@@ -37,7 +59,11 @@ DNode* search(DNode* head, const char* str)
 
 DNode* remove(DNode* head, DNode* p)
 {
-
+	if (p == head)
+		return;
+	p->llink->rlink = p->rlink;
+	p->rlink->llink = p->llink;
+	free(p);
 }
 
 int main()
