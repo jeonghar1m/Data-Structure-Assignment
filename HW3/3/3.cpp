@@ -10,11 +10,6 @@ typedef struct Dnode
 	struct Dnode* rlink;
 }DNode;
 
-void init(DNode* head)
-{
-	head->llink = head;
-	head->rlink = head;
-}
 
 unsigned int countList(DNode* head)
 {
@@ -85,6 +80,7 @@ int main()
 	head = &header;
 
 	int menu_select = 0;
+	int app_select = 0;
 
 	while (menu_select != 4)
 	{
@@ -95,6 +91,15 @@ int main()
 		{
 		case 1:
 		{
+			printf("구동할 앱을 선택하세요.\n");
+			printf("1. 카카오톡, 2. 페이스북, 3. 인스타그램\t입력: ");
+			scanf("%d", &app_select);
+			if (app_select == 1)
+				add(head, "카카오톡");
+			else if (app_select == 2)
+				add(head, "페이스북");
+			else if (app_select == 3)
+				add(head, "인스타그램");
 			break;
 		}
 		case 2:
