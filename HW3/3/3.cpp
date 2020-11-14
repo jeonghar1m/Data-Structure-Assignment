@@ -13,7 +13,11 @@ typedef struct Dnode
 
 unsigned int countList(DNode* head)
 {
-
+	int len = 0;
+	DNode* temp = head;
+	for (temp; temp != NULL; temp = temp->rlink)
+		len++;
+	return len;
 }
 
 void print_list(DNode* head)
@@ -45,17 +49,23 @@ DNode* add(DNode *head, char* item)
 	p->rlink = head->rlink;
 	head->rlink->llink = p;
 	head->rlink = p;
+
+	return p;
 }
 
 DNode* search(DNode* head, const char* str)
 {
-
+	DNode* temp = head;
+	for (temp; temp != NULL; temp = temp->rlink)
+		if (temp->data == str)
+			return temp;
+	return temp;
 }
 
 DNode* remove(DNode* head, DNode* p)
 {
 	if (p == head)
-		return;
+		return p;
 	p->llink->rlink = p->rlink;
 	p->rlink->llink = p->llink;
 	free(p);
