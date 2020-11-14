@@ -44,7 +44,7 @@ DNode* createNode(char* str)
 DNode* add(DNode *head, char* item)
 {
 	DNode* newnode = createNode(item);
-	DNode* p;
+	DNode* p = nullptr;
 	p->llink = head;
 	p->rlink = head->rlink;
 	head->rlink->llink = p;
