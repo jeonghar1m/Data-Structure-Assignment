@@ -12,6 +12,11 @@ typedef struct node
     struct node* link;
 }Node;
 
+enum menu
+{
+    ISEMPTY = 1, INPUT, OUTPUT, SEARCH, REMOVE, CLEAR
+};
+
 Node add(Node **head, int item)
 {
     Node* p = (Node*)malloc(sizeof(Node));
@@ -130,7 +135,7 @@ int main()
         scanf("%d", &select);
         switch (select)
         {
-        case 1:
+        case ISEMPTY:
             {
                 if (is_empty(head))
                     printf("is_empty = TRUE\n");
@@ -138,7 +143,7 @@ int main()
                     printf("is_empty = FALSE\n");
                 break;
             }
-        case 2:
+        case INPUT:
             {
                 printf("5개의 원소를 삽입합니다.\n");
                 for (int i = 0; i < 5; i++) {
@@ -147,14 +152,14 @@ int main()
                 }
                 break;
             }
-        case 3:
+        case OUTPUT:
             {
                 printf("리스트의 길이를 출력합니다.%d\n", get_length(head));
                 printf("리스트의 모든 요소를 출력합니다.\n");
                 display(head);
                 break;
             }
-        case 4:
+        case SEARCH:
             {
 
                 printf("리스트에 존재하는지 조사할 숫자: ");
@@ -166,7 +171,7 @@ int main()
                     printf("없음\n");
                 break;
             }
-        case 5:
+        case REMOVE:
             {
 
                 printf("리스트의 원소 중 제거하고 싶은 숫자: ");
@@ -185,7 +190,7 @@ int main()
                 printf("남아있는 원소의 갯수는 %d개입니다.\n", get_length(head));
                 break;
             }
-        case 6:
+        case CLEAR:
             {
                     printf("리스트의 원소를 모두 제거하겠습니다.\n");
                     clear(&head, len);
