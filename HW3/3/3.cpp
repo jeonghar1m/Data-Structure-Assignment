@@ -10,6 +10,10 @@ typedef struct Dnode
 	struct Dnode* rlink;
 }DNode;
 
+enum menu
+{
+	ADD = 1, REMOVE, PRINT, QUIT
+};
 
 unsigned int countList(DNode* head)
 {
@@ -99,7 +103,7 @@ int main()
 
 		switch (menu_select)
 		{
-		case 1:
+		case ADD:
 		{
 			printf("구동할 앱을 선택하세요.\n");
 			printf("1. 카카오톡, 2. 페이스북, 3. 인스타그램\t입력: ");
@@ -112,15 +116,15 @@ int main()
 				add(head, "인스타그램");
 			break;
 		}
-		case 2:
+		case REMOVE:
 		{
 			break;
 		}
-		case 3:
+		case PRINT:
 		{
 			break;
 		}
-		case 4:
+		case QUIT:
 			return 0;
 		}
 	}
