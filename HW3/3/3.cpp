@@ -95,6 +95,8 @@ int main()
 
 	int menu_select = 0;
 	int app_select = 0;
+	int value = 0;
+	char* app = nullptr;
 
 	while (menu_select != 4)
 	{
@@ -105,15 +107,28 @@ int main()
 		{
 		case ADD:
 		{
-			printf("구동할 앱을 선택하세요.\n");
-			printf("1. 카카오톡, 2. 페이스북, 3. 인스타그램\t입력: ");
-			scanf("%d", &app_select);
-			if (app_select == 1)
-				add(head, "카카오톡");
-			else if (app_select == 2)
-				add(head, "페이스북");
-			else if (app_select == 3)
-				add(head, "인스타그램");
+			//printf("구동할 앱을 선택하세요.\n");
+			//printf("1. 카카오톡, 2. 페이스북, 3. 인스타그램\t입력: ");
+			//scanf("%d", &app_select);
+			//if (app_select == 1)
+			//	add(head, "카카오톡");
+			//else if (app_select == 2)
+			//	add(head, "페이스북");
+			//else if (app_select == 3)
+			//	add(head, "인스타그램");
+			printf("몇 개의 앱을 구동하시겠습니까?\t입력: ");
+			scanf("%d", value);
+			if (value > 0)
+			{
+				printf("실행시킬 앱의 이름을 입력해주세요.\n");
+				for (int i = 0; i < value; i++)
+				{
+					scanf("%s", &app);
+					add(head, app);
+				}
+			}
+			else
+				printf("잘못된 입력입니다.\n");
 			break;
 		}
 		case REMOVE:
