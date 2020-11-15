@@ -80,6 +80,7 @@ int main()
 	DNode header;
 	DNode trailer;
 	DNode* head = NULL;
+	DNode* temp = NULL;
 
 	//더미 헤드와 더미 테일 노드의 초기화
 	header.data = NULL;		// 초기화하지만 사용하지는 않는 데이터
@@ -107,15 +108,6 @@ int main()
 		{
 		case ADD:
 		{
-			//printf("구동할 앱을 선택하세요.\n");
-			//printf("1. 카카오톡, 2. 페이스북, 3. 인스타그램\t입력: ");
-			//scanf("%d", &app_select);
-			//if (app_select == 1)
-			//	add(head, "카카오톡");
-			//else if (app_select == 2)
-			//	add(head, "페이스북");
-			//else if (app_select == 3)
-			//	add(head, "인스타그램");
 			printf("몇 개의 앱을 구동하시겠습니까?\t입력: ");
 			scanf("%d", value);
 			if (value > 0)
@@ -133,6 +125,16 @@ int main()
 		}
 		case REMOVE:
 		{
+			printf("종료할 앱의 이름을 입력해주세요.\t입력: ");
+			scanf("%d", &app);
+			temp = search(head, app);
+			if (temp == NULL)
+				printf("앱을 찾을 수 없습니다.");
+			else
+			{
+				
+			}
+
 			break;
 		}
 		case PRINT:
