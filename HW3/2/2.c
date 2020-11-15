@@ -17,7 +17,7 @@ enum menu
     ISEMPTY = 1, INPUT, OUTPUT, SEARCH, REMOVE, CLEAR
 };
 
-Node add(Node **head, int item)
+Node add(Node** head, int item)
 {
     Node* p = (Node*)malloc(sizeof(Node));
     p->data = item;
@@ -52,7 +52,7 @@ Node add(Node **head, int item)
         }
     }
 }
-void delete(Node **head, int item, int len)
+void del(Node** head, int item, int len)
 {
     Node* removed;
     if ((*head)->link == NULL)
@@ -69,13 +69,13 @@ void delete(Node **head, int item, int len)
     else {
         Node* pre = *head;
         for (pre; pre->link->data != item; pre = pre->link);
-            removed = pre->link;
+        removed = pre->link;
         pre->link = removed->link;
         free(removed);
     }
     len--;
 }
-void clear(Node **head, int len)
+void clear(Node** head, int len)
 {
     Node* removed;
     Node* temp = *head;
@@ -90,16 +90,16 @@ void clear(Node **head, int len)
 
     }
 }
-int *is_in_list(Node *head, int item)
+int* is_in_list(Node* head, int item)
 {
-    Node *temp = head;
+    Node* temp = head;
     for (temp; temp != NULL; temp = temp->link)
         if (temp->data == item)
             return temp;
 
     return temp;
 }
-unsigned int get_length(Node *head)
+unsigned int get_length(Node* head)
 {
     int len = 0;
     Node* temp = head;
@@ -136,68 +136,68 @@ int main()
         switch (select)
         {
         case ISEMPTY:
-            {
-                if (is_empty(head))
-                    printf("is_empty = TRUE\n");
-                else if (!is_empty(head))
-                    printf("is_empty = FALSE\n");
-                break;
-            }
+        {
+            if (is_empty(head))
+                printf("is_empty = TRUE\n");
+            else if (!is_empty(head))
+                printf("is_empty = FALSE\n");
+            break;
+        }
         case INPUT:
-            {
-                printf("5개의 원소를 삽입합니다.\n");
-                for (int i = 0; i < 5; i++) {
-                    scanf("%d", &item);
-                    add(&head, item);
-                }
-                break;
+        {
+            printf("5개의 원소를 삽입합니다.\n");
+            for (int i = 0; i < 5; i++) {
+                scanf("%d", &item);
+                add(&head, item);
             }
+            break;
+        }
         case OUTPUT:
-            {
-                printf("리스트의 길이를 출력합니다.%d\n", get_length(head));
-                printf("리스트의 모든 요소를 출력합니다.\n");
-                display(head);
-                break;
-            }
+        {
+            printf("리스트의 길이를 출력합니다.%d\n", get_length(head));
+            printf("리스트의 모든 요소를 출력합니다.\n");
+            display(head);
+            break;
+        }
         case SEARCH:
-            {
+        {
 
-                printf("리스트에 존재하는지 조사할 숫자: ");
-                scanf("%d", &item);
-                temp = is_in_list(head, item);
-                if (temp != NULL)
-                    printf("%d이(가)있습니다.\n", temp->data);
-                else
-                    printf("없음\n");
-                break;
-            }
+            printf("리스트에 존재하는지 조사할 숫자: ");
+            scanf("%d", &item);
+            temp = is_in_list(head, item);
+            if (temp != NULL)
+                printf("%d이(가)있습니다.\n", temp->data);
+            else
+                printf("없음\n");
+            break;
+        }
         case REMOVE:
+        {
+
+            printf("리스트의 원소 중 제거하고 싶은 숫자: ");
+            scanf("%d", &item);
+            temp = is_in_list(head, item);
+            if (temp == NULL)
+                printf("없음\n");
+            else
             {
-
-                printf("리스트의 원소 중 제거하고 싶은 숫자: ");
-                scanf("%d", &item);
-                temp = is_in_list(head, item);
-                if (temp == NULL)
-                    printf("없음\n");
-                else
-                {
-                    delete(&head, temp->data, len);
-                    printf("제거되었습니다.\n");
-                }
-
-                printf("리스트의 모든 요소를 출력합니다.\n");
-                display(head);
-                printf("남아있는 원소의 갯수는 %d개입니다.\n", get_length(head));
-                break;
+                del(&head, temp->data, len);
+                printf("제거되었습니다.\n");
             }
+
+            printf("리스트의 모든 요소를 출력합니다.\n");
+            display(head);
+            printf("남아있는 원소의 갯수는 %d개입니다.\n", get_length(head));
+            break;
+        }
         case CLEAR:
-            {
-                    printf("리스트의 원소를 모두 제거하겠습니다.\n");
-                    clear(&head, len);
-                    printf("리스트에 남아있는 원소를 출력합니다.\n");
-                    display(head);
-                    break;
-            }
+        {
+            printf("리스트의 원소를 모두 제거하겠습니다.\n");
+            clear(&head, len);
+            printf("리스트에 남아있는 원소를 출력합니다.\n");
+            display(head);
+            break;
+        }
         }
     } while (select != 0);
 }
